@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Definición de la URL base para las solicitudes al servidor.
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://localhost:8090';
 
 // Función asincrónica para recuperar grupos desde el servidor.
 export const fetchGroups = async () => {

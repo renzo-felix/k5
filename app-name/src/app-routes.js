@@ -1,7 +1,11 @@
-import { HomePage, TasksPage, ProfilePage } from './pages';
+import { HomePage, TasksPage, ProfilePage, GroupsPage } from './pages';
 import { withNavigationWatcher } from './contexts/navigation';
 
 const routes = [
+    {
+        path: "/groups",
+        element: GroupsPage
+    },
     {
         path: '/tasks',
         element: TasksPage
