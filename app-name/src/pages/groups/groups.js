@@ -21,6 +21,7 @@ export default function Group() {
                 setGroupsWithPersonCount(groupsData.map(group => ({
                     id: group.id,
                     name: group.name,
+                    tipoGrupo: group.tipoGrupo ? group.tipoGrupo.tipo : 'Tipo no definido',
                     personCount: group.persons ? group.persons.length : 0
                 })))
             })
@@ -43,9 +44,11 @@ export default function Group() {
             {/* Define la segunda columna con el campo 'name'. */}
             <Column dataField="name" />
 
+            <Column dataField="tipoGrupo" />
+
             {/* Define la tercera columna con el campo 'personCount' y un título personalizado 'Number of Persons'. */}
             <Column dataField="personCount" caption="Number of Persons" />
         </DataGrid>
 
-    )
+ )
 }

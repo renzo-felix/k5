@@ -28,23 +28,18 @@ public class PersonController {
     private final PersonService personService;
 
     @Autowired
+
     public PersonController(PersonService personService) {
         Assert.notNull(personService, "PersonService must not be null!");
         this.personService = personService;
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonDTO>> getAllPersons() {
+    public ResponseEntity<List<Person>> getAllPersons() {
         List<Person> persons = personService.getAllPersons();
-        List<PersonDTO> personDTOs = persons.stream()
-                                            .map(this::toDTO)
-                                            .collect(Collectors.toList());
-        return ResponseEntity.ok(personDTOs);
+        return ResponseEntity.ok(persons);
     }
 
-    private PersonDTO toDTO(Person person) {
-        return new PersonDTO(person.getId(), person.getName());
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable Long id) {

@@ -2,8 +2,9 @@ package com.example.demo.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.*;
@@ -16,15 +17,15 @@ public class Person {
     private Long id;
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "persons")
     private Set<Group> groups = new HashSet<>();
 
     // Constructors, getters, and setters
     public Person() {}
 
-    public Person(String name, Set<Group> groups) {
+    public Person(String name) {
         this.name = name;
-        this.groups = groups;
     }
 
     public Long getId() {
@@ -35,6 +36,7 @@ public class Person {
         return name; 
     }
 
+    @JsonIgnore
     public Set<Group> getGroups() {
         return groups;
     }
